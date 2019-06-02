@@ -1308,3 +1308,19 @@ source "arch/arm64/crypto/Kconfig"
 endif
 
 source "lib/Kconfig"
+
+menu "Xiaomi configuration options"
+
+config MACH_XIAOMI
+				bool "Xiaomi device"
+				depends on ARCH_QCOM
+				help
+					Support for Xiaomi products
+
+config MACH_XIAOMI_WHYRED
+				bool "Xiaomi Whyred board"
+				depends on ARCH_SDM660
+				help
+					Support for Xiaomi Redmi Note 5 (Pro) [whyred]
+
+endmenu
