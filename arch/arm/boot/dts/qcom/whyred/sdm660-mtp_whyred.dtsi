@@ -12,14 +12,14 @@
  */
 
 #include "sdm660-pinctrl.dtsi"
-#include "sdm660-camera-sensor-mtp.dtsi"
+#include "sdm660-camera-sensor-mtp_whyred.dtsi"
 #include "sdm660-novatek-i2c_d2s.dtsi"
 / {
 	mtp_batterydata: qcom,battery-data {
 		qcom,batt-id-range-pct = <15>;
-		#include "fg-gen3-batterydata-l8866sun-3000mah.dtsi"
-		#include "fg-gen3-batterydata-l8866cos-3000mah.dtsi"
-		#include "fg-gen3-batterydata-l8866default-3000mah.dtsi"
+		#include "fg-gen3-batterydata-l6650sun-4000mah.dtsi"
+		#include "fg-gen3-batterydata-l6650cos-4000mah.dtsi"
+		#include "fg-gen3-batterydata-l6650desay-4000mah.dtsi"
 	};
 };
 
@@ -111,6 +111,7 @@
 };
 
 &pm660l_wled {
+	qcom,fs-curr-ua = <18000>;
 	qcom,led-strings-list = [00 01];
 };
 
@@ -118,6 +119,7 @@
 	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_wled";
 	qcom,mdss-dsi-bl-min-level = <1>;
 	qcom,mdss-dsi-bl-max-level = <4095>;
+	qcom,mdss-brightness-max-level = <4095>;
 	qcom,panel-supply-entries = <&dsi_panel_pwr_supply>;
 };
 
@@ -132,6 +134,7 @@
 	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_wled";
 	qcom,mdss-dsi-bl-min-level = <1>;
 	qcom,mdss-dsi-bl-max-level = <4095>;
+	qcom,mdss-brightness-max-level = <4095>;
 	qcom,panel-supply-entries = <&dsi_panel_pwr_supply>;
 };
 
@@ -139,6 +142,7 @@
 	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_wled";
 	qcom,mdss-dsi-bl-min-level = <1>;
 	qcom,mdss-dsi-bl-max-level = <4095>;
+	qcom,mdss-brightness-max-level = <4095>;
 	qcom,panel-supply-entries = <&dsi_panel_pwr_supply>;
 };
 
@@ -146,6 +150,7 @@
 	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_wled";
 	qcom,mdss-dsi-bl-min-level = <1>;
 	qcom,mdss-dsi-bl-max-level = <4095>;
+	qcom,mdss-brightness-max-level = <4095>;
 	qcom,panel-supply-entries = <&dsi_panel_pwr_supply>;
 };
 
