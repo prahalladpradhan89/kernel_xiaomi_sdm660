@@ -98,3 +98,11 @@ obj-$(CONFIG_TOUCHSCREEN_ZFORCE)	+= zforce_ts.o
 obj-$(CONFIG_TOUCHSCREEN_COLIBRI_VF50)	+= colibri-vf50-ts.o
 obj-$(CONFIG_TOUCHSCREEN_ROHM_BU21023)	+= rohm_bu21023.o
 obj-$(CONFIG_TOUCHSCREEN_ST)		+= st/
+
+obj-$(CONFIG_TOUCHSCREEN_NVT) 	+= nvt_touch/
+obj-$(CONFIG_MACH_XIAOMI_WHYRED)	+= lct_tp_fm_info.o
+obj-$(CONFIG_MACH_XIAOMI_WHYRED)	+= lct_ctp_selftest.o
+obj-$(CONFIG_MACH_XIAOMI_WHYRED)	+= lct_ctp_upgrade.o
+obj-$(CONFIG_MACH_XIAOMI_WHYRED)	+= lct_if_ctp_upgrade.o
+obj-$(CONFIG_MACH_XIAOMI_WHYRED)	+= lct_tp_gesture.o
+
