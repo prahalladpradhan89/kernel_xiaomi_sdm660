@@ -73,7 +73,7 @@ static int __written_first_block(struct f2fs_sb_info *sbi,
 
 	if (!__is_valid_data_blkaddr(addr))
 		return 1;
-	if (!f2fs_is_valid_blkaddr(sbi, addr, DATA_GENERIC_ENHANCE))
+	if (!f2fs_is_valid_blkaddr(sbi, addr, DATA_GENERIC))
 		return -EFAULT;
 	return 0;
 }
@@ -177,8 +177,8 @@ bool f2fs_inode_chksum_verify(struct f2fs_sb_info *sbi, struct page *page)
 
 	if (provided != calculated)
 		f2fs_msg(sbi->sb, KERN_WARNING,
-			"checksum invalid, nid = %lu, ino_of_node = %x, %x vs. %x",
-			page->index, ino_of_node(page), provided, calculated);
+			"checksum invalid, ino = %x, %x vs. %x",
+			ino_of_node(page), provided, calculated);
 
 	return provided == calculated;
 }
@@ -267,10 +267,9 @@ static bool sanity_check_inode(struct inode *inode, struct page *node_page)
 		struct extent_info *ei = &F2FS_I(inode)->extent_tree->largest;
 
 		if (ei->len &&
-			(!f2fs_is_valid_blkaddr(sbi, ei->blk,
-						DATA_GENERIC_ENHANCE) ||
+			(!f2fs_is_valid_blkaddr(sbi, ei->blk, DATA_GENERIC) ||
 			!f2fs_is_valid_blkaddr(sbi, ei->blk + ei->len - 1,
-						DATA_GENERIC_ENHANCE))) {
+							DATA_GENERIC))) {
 			set_sbi_flag(sbi, SBI_NEED_FSCK);
 			f2fs_msg(sbi->sb, KERN_WARNING,
 				"%s: inode (ino=%lx) extent info [%u, %u, %u] "
@@ -489,7 +488,6 @@ make_now:
 	return inode;
 
 bad_inode:
-	f2fs_inode_synced(inode);
 	iget_failed(inode);
 	trace_f2fs_iget_exit(inode, ret);
 	return ERR_PTR(ret);
